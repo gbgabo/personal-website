@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon";
+
 export interface Props {
 	title: string;
 }
@@ -15,21 +17,74 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
-		<slot />
-	</body>
+	<header class="fixed w-full bottom-0 md:sticky md:top-0">
+		<nav class="flex justify-between p-3 bg-[#240041] md:px-28 py-4">
+			<a class="flex items-center mt-1 mx-4" href="/posts"
+				><img class="w-9" src="/images/profile_alpha.svg" alt="" />
+			</a>
+			<ul class="hidden md:flex">
+				<li>
+					<a
+						class="font-medium text-[#00ffb7] hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+						href="/posts">/posts</a
+					>
+				</li>
+				<li>
+					<a
+						class="font-medium text-[#c79bff] hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+						href="/projects">/projects</a
+					>
+				</li>
+				<li>
+					<a
+						class="font-medium text-[#c79bff] hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+						href="/snippets">/snippets</a
+					>
+				</li>
+				<li>
+					<a
+						class="font-medium text-[#c79bff] hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+						href="/about">/about</a
+					>
+				</li>
+			</ul>
+			<div class="hidden md:flex items-center">
+				<a
+					class="text-gray-500 dark:text-[#c79bff] hover:text-[#00ffb7] text-sm p-2.5 inline-flex items-center transition duration-150 ease-in-out"
+					aria-label="Search"
+				>
+					<Icon name="tabler:search" class="w-5 h-5" />
+				</a>
+				<a
+					class="text-gray-500 dark:text-[#c79bff] hover:text-[#00ffb7] text-sm p-2.5 inline-flex items-center transition duration-150 ease-in-out"
+					aria-label="RSS Feed"
+				>
+					<Icon name="tabler:rss" class="w-5 h-5" />
+				</a>
+				<a
+					href="https://github.com/onwidget/astrowind"
+					class="text-gray-500 dark:text-[#c79bff] hover:text-[#00ffb7] text-sm p-2.5 inline-flex items-center transition duration-150 ease-in-out"
+					aria-label="Website Github Project"
+				>
+					<Icon name="tabler:brand-github" class="w-5 h-5" />
+				</a>
+			</div>
+			<div class="flex w-max md:hidden justify-between">
+				<a
+					class="text-gray-500 dark:text-[#c79bff] hover:text-[#00ffb7] text-sm p-2.5 inline-flex items-center transition duration-150 ease-in-out"
+					aria-label="Menu"
+				>
+					<Icon name="tabler:menu-2" class="w-5 h-5" />
+				</a>
+				<a
+					class="text-gray-500 dark:text-[#c79bff] hover:text-[#00ffb7] text-sm p-2.5 inline-flex items-center transition duration-150 ease-in-out"
+					aria-label="Search"
+				>
+					<Icon name="tabler:search" class="w-5 h-5" />
+				</a>
+			</div>
+		</nav>
+	</header>
+
+	<slot />
 </html>
-<style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-</style>
