@@ -1,0 +1,18 @@
+---
+import Card from "../../components/Card.astro";
+
+const posts = await Astro.glob("../../../data/*.md");
+console.log(posts);
+---
+
+<>
+    {
+        posts.map((post) => (
+            <Card
+                href={`/blog/${post.frontmatter.slug}`}
+                title={post.frontmatter.title}
+                body="Learn how Astro works and explore the official API docs."
+            />
+        ))
+    }
+</>
